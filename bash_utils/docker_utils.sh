@@ -35,6 +35,16 @@ get_container_id(){
     return 0
 }
 
+stop_container(){
+    container_id=`get_container_id $1`
+
+    if [[ $? -ne 0 ]]; then
+        >&2 echo "Failed to get container id..."
+    else
+        docker stop $container_id
+    fi
+}
+
 get_container_ip(){
     container_id=`get_container_id $1`
 
@@ -148,10 +158,17 @@ dcrestart_and_log() {
     docker-compose logs -f $1
 }
 
+
+
 # Docker container alias
 alias goto='get_into_docker_container'
 alias ip='get_container_ip'
 alias log='get_container_log'
+
+# Docker compose alias
+alias dps='docker ps'
+alias dlogs='docker logs'
+alias dstop='stop_container'
 
 # Docker compose alias
 alias dcps='docker-compose ps'

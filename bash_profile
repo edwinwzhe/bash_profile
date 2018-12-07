@@ -2,7 +2,7 @@
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 set -o vi
-alias ll='ls -lart --color=auto'
+alias ll='ls -lart'
 
 ### Source utils
 source $CURRENT_DIR/bash_utils/utils.sh
