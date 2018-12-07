@@ -6,6 +6,7 @@ alias ll='ls -lart --color=auto'
 
 ### Source utils
 source $CURRENT_DIR/bash_utils/utils.sh
+source $CURRENT_DIR/bash_utils/python_utils.sh
 source $CURRENT_DIR/bash_utils/docker_utils.sh
 
 ### Colors

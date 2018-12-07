@@ -13,13 +13,10 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
 "Plugin 'Valloric/YouCompleteMe'
 "Plugin 'scrooloose/NERDTree'
 "Plugin 'https://github.com/jistr/vim-nerdtree-tabs.git'
 "Plugin 'https://github.com/davidhalter/jedi-vim.git'
-
- 
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -87,7 +84,7 @@ hi StatusLineNC ctermfg=Blue ctermbg=White cterm=NONE
 " let &t_te = "\e[0 q"
 
 " NERDTree
-let NERDTreeIgnore=['__pycache__', '\.pyc$']
+" let NERDTreeIgnore=['__pycache__', '\.pyc$']
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
