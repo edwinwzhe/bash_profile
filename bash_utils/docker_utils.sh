@@ -35,6 +35,16 @@ get_container_id(){
     return 0
 }
 
+start_container(){
+    container_id=`get_container_id $1`
+
+    if [[ $? -ne 0 ]]; then
+        >&2 echo "Failed to get container id..."
+    else
+        docker start $container_id
+    fi
+}
+
 stop_container(){
     container_id=`get_container_id $1`
 
@@ -169,6 +179,7 @@ alias log='get_container_log'
 alias dps='docker ps'
 alias dlogs='docker logs'
 alias dstop='stop_container'
+alias dstart='start_container'
 
 # Docker compose alias
 alias dcps='docker-compose ps'
