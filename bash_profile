@@ -1,7 +1,7 @@
 # .bash_profile
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
-PS1=$'\n\[\e[32m\] $(PWD) \[\e[0m\] \n\xF0\x9F\x90\x8D '
+PS1=$'\[\e[32m\] $(PWD) \[\e[0m\] \n\xE2\x9A\xA1 '
 
 set -o vi
 alias ll='ls -lart'
