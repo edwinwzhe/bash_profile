@@ -108,8 +108,12 @@ get_container_log(){
         docker cp logrotate:${log_file} /tmp/${save_as_file} #2>/dev/null
 
         if [[ -e /tmp/${save_as_file} ]]; then
-        #echo docker cp logrotate:${log_file} /tmp/${save_as_file}
-            zcat /tmp/${save_as_file} > /tmp/${save_as_file}.json.log
+            if [[ `file /tmp/${save_as_file} | grep compressed | wc -l` -eq 1 ]]; then
+                zcat /tmp/${save_as_file} > /tmp/${save_as_file}.json.log
+            else
+                mv /tmp/${save_as_file} /tmp/${save_as_file}.json.log
+            fi
+
             python ~/margarita_tools/parse_json_service_log.py /tmp/${save_as_file}.json.log | less
         fi
         return 0
@@ -141,8 +145,13 @@ get_container_log(){
 
     >&2 echo "Getting log file $log_file from logrotate as /tmp/${save_as_file}.json.log"
     docker cp logrotate:${log_file} /tmp/${save_as_file} #2>/dev/null
+
     echo docker cp logrotate:${log_file} /tmp/${save_as_file}
-    zcat /tmp/${save_as_file} > /tmp/${save_as_file}.json.log
+    if [[ `file /tmp/${save_as_file} | grep compressed | wc -l` -eq 1 ]]; then
+        zcat /tmp/${save_as_file} > /tmp/${save_as_file}.json.log
+    else
+        mv /tmp/${save_as_file} /tmp/${save_as_file}.json.log
+    fi
 
     python ~/margarita_tools/parse_json_service_log.py /tmp/${save_as_file}.json.log | less
     return 0
