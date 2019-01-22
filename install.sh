@@ -45,6 +45,25 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 echo "Installing vim profile..."
 install $HOME/.vimrc $CURRENT_DIR/vimrc
 
+if [[ `vi --version | grep 'Small version' | wc -l` -eq 1 ]]
+then
+    echo "\-\> Installing vim Huge version..."
+    if [[ -f /usr/bin/apt-get ]]
+    then
+        sudo apt-get install vim-gui-common
+        sudo apt-get install vim-runtime
+    else
+        echo "   Not sure how to install..."
+    fi
+fi
+
+if [[ ! -d $HOME/.vim/bundle/Vundle.vim ]]
+then
+    echo "\-\> Installing vim plugin: vundle..."
+    mkdir -p $HOME/.vim/bundle/Vundle.vim
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
+
 if [[ $? -eq 0 ]]
 then
     echo "Install vim color theme..."
