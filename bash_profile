@@ -9,7 +9,11 @@ alias ll='ls -lart'
 ### Source utils
 source $CURRENT_DIR/bash_utils/utils.sh
 source $CURRENT_DIR/bash_utils/python_utils.sh
-source $CURRENT_DIR/bash_utils/docker_utils.sh
+
+if [[ $(which docker) != '' ]]
+then
+    source $CURRENT_DIR/bash_utils/docker_utils.sh
+fi
 
 ### Colors
 export _norm_="$(printf '\033[0m')" #reset "everything" to normal
