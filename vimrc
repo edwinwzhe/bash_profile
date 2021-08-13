@@ -41,7 +41,6 @@ filetype on
 filetype plugin indent on
 syntax on
 set number
-set ts=4
 let mapleader=","
 
 
